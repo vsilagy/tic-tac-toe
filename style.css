@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Cabin:wght@400;600&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -7,56 +6,72 @@
 }
 body {
   height: 100vh;
-  font-family: 'Cabin', sans-serif;
   font-family: 'Cabin Sketch', cursive;
-}
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-.game-title {
-  font-size: 5rem;
-}
-.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
 }
 .game-title {
+  font-size: 5rem;
   text-align: center;
   margin: 1rem;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 .game-board {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
   width: 24rem;
   margin: 0 auto;
 }
 .cell {
-  width: 8rem;
-  height: 8rem;
+  width: 9rem;
+  height: 9rem;
   border: 1px solid black;
   box-shadow: 0 0 0 1px;
   cursor: pointer;
+  font-size: 8rem;
+  font-weight: 700;
+  text-align: center;
 }
-.main .btn {
-  background-color: #000502;
+.game-message {
+  font-size: 5rem;
+}
+.btn {
+  background-color: black;
 	border-radius: 8px;
   border: none;
 	cursor: pointer;
 	color: #ffffff;
-	font-family: 'Cabin', sans-serif;;
+	font-family: 'Cabin', sans-serif;
 	font-size: 1rem;
 	font-weight: bold;
 	padding: 1em 2em;
 }
-.main .btn:hover {
+.btn:hover {
   background-color:#5cbf2a;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 0.625em;
+  width: 100%;
+  margin-top: auto;
+  padding: .4em;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1rem;
+}
+.github-logo {
+  height: 1.5em;
+  transition: transform 0.4s ease-in-out;
+}
+.github-logo:hover {
+  transform: rotateY(0.5turn) scale(1.4);
 }
