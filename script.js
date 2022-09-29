@@ -9,18 +9,20 @@ const winCombos = [
   [1, 4, 7],
   [2, 5, 8],
   [0, 4, 8],
-  [0, 4, 6]
+  [2, 4, 6]
 ];
 let gameOptions = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameRunning = false;
+const currentPlayerTurn = () => gameMessage.textContent = `${currentPlayer}'s turn`;
+const messageColor = (color) => gameMessage.style.color = color;
 
 startGame()
 
 function startGame() {
   cells.forEach(cell => cell.addEventListener("click", handleCellClick));
   restartBtn.addEventListener("click", restartGame)
-  gameMessage.textContent = `${currentPlayer}'s turn`;
+  currentPlayerTurn()
   gameRunning = true;
 }
 
@@ -30,7 +32,6 @@ function handleCellClick(e) {
     return;
   }
   handleUpdateCell(e.target, cellIndex);
-  // handleChangePlayer();
   checkWin()
 }
 
@@ -41,7 +42,7 @@ function handleUpdateCell(cell, cellIndex) {
 
 function handleChangePlayer() {
   currentPlayer = currentPlayer === "X" ? "O" : "X";
-  gameMessage.textContent = `${currentPlayer}'s turn`;
+  currentPlayerTurn();
 }
 
 function checkWin() {
@@ -64,20 +65,22 @@ function checkWin() {
 
   if (winRound) {
     gameMessage.textContent = `${currentPlayer} wins!`;
+    messageColor("#5cbf2a");
     gameRunning = false;
   } else if (!gameOptions.includes("")) {
-    gameMessage.textContent `Draw!`
+    gameMessage.textContent = `Draw game!`
+    messageColor("blue")
     gameRunning = false;
   } else {
     handleChangePlayer();
   }
-
 }
 
 function restartGame() {
   currentPlayer = "X";
   gameRunning = true;
   gameOptions = ["", "", "", "", "", "", "", "", ""];
-  gameMessage.textContent = `${currentPlayer}'s turn`;
+  currentPlayerTurn()
+  messageColor("black")
   cells.forEach(cell => cell.textContent = "");
 }
