@@ -46,30 +46,30 @@ function handleChangePlayer() {
 }
 
 function checkWin() {
-  let winRound = false;
+  let gameWon = false;
 
   for(let i = 0; i < winCombos.length; i++) {
     const combo = winCombos[i];
-    let cellA = gameOptions[combo[0]];
-    let cellB = gameOptions[combo[1]];
-    let cellC = gameOptions[combo[2]];
+    let a = gameOptions[combo[0]];
+    let b = gameOptions[combo[1]];
+    let c = gameOptions[combo[2]];
 
-    if(cellA === "" || cellB === "" || cellC === ""){
-      continue
+    if(a === "" || b === "" || c === ""){
+      continue;
     }
-    if (cellA === cellB && cellB === cellC) {
-      winRound = true;
+    if (a === b && b === c) {
+      gameWon = true;
       break;
     }
   }
 
-  if (winRound) {
+  if (gameWon) {
     gameMessage.textContent = `${currentPlayer} wins!`;
     messageColor("#5cbf2a");
     gameRunning = false;
   } else if (!gameOptions.includes("")) {
     gameMessage.textContent = `Draw game!`
-    messageColor("blue")
+    messageColor("blue");
     gameRunning = false;
   } else {
     handleChangePlayer();
@@ -80,7 +80,7 @@ function restartGame() {
   currentPlayer = "X";
   gameRunning = true;
   gameOptions = ["", "", "", "", "", "", "", "", ""];
-  currentPlayerTurn()
-  messageColor("black")
+  currentPlayerTurn();
+  messageColor("black");
   cells.forEach(cell => cell.textContent = "");
 }
